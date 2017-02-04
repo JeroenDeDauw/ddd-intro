@@ -97,7 +97,7 @@
 				</section>
 
 				<section>
-					<!-- TODO: list of names -->
+					<p>Customer, User, Prospect, Visitor, Subscriber, Lead, ...</p>
 
 					<aside class="notes">
 						<p>Names differ between contexts</p>
@@ -132,8 +132,52 @@
 
 				<section>
 					<p>Persistence per context</p>
+				</section>
 
-					<!-- TODO: defaulting (product price -> order price) (cascading deletes) -->
+				<section>
+					<table>
+						<tr>
+							<th>Product</th>
+							<th>Order</th>
+						</tr>
+						<tr>
+							<td>Price</td>
+							<td style="color: yellow">ProductId</td>
+						</tr>
+						<tr>
+							<td>Seller</td>
+							<td>OrderDate</td>
+						</tr>
+						<tr>
+							<td>...</td>
+							<td>...</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<table>
+						<tr>
+							<th>Product</th>
+							<th>Order</th>
+						</tr>
+						<tr>
+							<td>Price</td>
+							<td style="color: lightgreen">Price (copy)</td>
+						</tr>
+						<tr>
+							<td>Seller</td>
+							<td>OrderDate</td>
+						</tr>
+						<tr>
+							<td>...</td>
+							<td>...</td>
+						</tr>
+					</table>
+
+					<aside class="notes">
+						<p>Cascading deletes</p>
+					</aside>
 				</section>
 
 				<section>
@@ -154,6 +198,8 @@
 		<script>
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
+				transition: 'none',
+
 				history: true,
 				controls: false,
 				progress: false,
