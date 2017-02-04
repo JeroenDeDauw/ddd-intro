@@ -23,13 +23,14 @@
 
 		<style>
 			.shadow { text-shadow: 1px 1px 3px #000, 4px 4px 5px darkblue; }
-			.slide-title { text-shadow: 1px 1px 3px #000, 4px 4px 5px darkblue; font-size: larger; }
+			.slide-title { text-shadow: 1px 1px 3px #000, 4px 4px 5px darkblue; }
+			.fill-in { color: lightgreen; text-shadow: 1px 1px 3px #000, 4px 4px 5px darkblue; }
 		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-background="img/">
+				<section data-background="img/IvoryTower.jpg">
 
 					<p class="slide-title">An introduction to</p>
 
@@ -49,22 +50,100 @@
 					</a></p>
 
 					<p style="text-align: right; font-size: small">IvoryTower.jpg</p>
+				</section>
+
+				<section>
+					<p class="slide-title">What is DDD?</p>
+				</section>
+
+				<section>
+					<blockquote style="width: 100%">
+						"At the core of DDD are ubiqutous language within bounded contexts"
+					</blockquote>
+				</section>
+
+				<section>
+					<blockquote style="width: 100%">
+						"DDD is about tackling the inherent complexity of the domain while minimizing the accidental complexity of technical implementation"
+					</blockquote>
+				</section>
+
+				<section>
+					<p class="slide-title">The Ubiquitous Language</p>
+				</section>
+
+				<section>
+					<h3 class="slide-title">The Context Game</h3>
+
+					<div class="fragment">
+						<p>Describe the ideal customer for...</p>
+
+						<ul>
+							<li>Sales</li>
+							<li>Shipping</li>
+							<li>Marketing</li>
+							<li>Support</li>
+							<li>Billing</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<!-- TODO: big Customer table -->
 
 					<aside class="notes">
-						<p>Introduction to The Clean Architecture</p>
-						<p>Story of our first implementation</p>
-						<p>Lessons learned</p>
+						<p>The software needs to cater to different goals</p>
 					</aside>
 				</section>
 
 				<section>
+					<!-- TODO: list of names -->
 
+					<aside class="notes">
+						<p>Names differ between contexts</p>
+					</aside>
 				</section>
 
 				<section>
+					<p>This add campaign is only for 30yr+ old <span class="fill-in">&lt;users&gt;</span></p>
 				</section>
 
 				<section>
+					<p><span class="fill-in">&lt;users&gt;</span> that bought 10 products should get this coupon</p>
+				</section>
+
+				<section>
+					<p>Contexts are linguistic boundaries</p>
+
+					<aside class="notes">
+						<p>Often per department</p>
+						<p>Division gives us accuracy</p>
+					</aside>
+				</section>
+
+				<section>
+					<!-- TODO: three legged race -->
+					<aside class="notes">
+						<p>Largely independent</p>
+						<p>Communication: batch, push/pull</p>
+						<p>Yellow flags: unidifed model, once, reuse</p>
+					</aside>
+				</section>
+
+				<section>
+					<p>Persistence per context</p>
+
+					<!-- TODO: defaulting (product price -> order price) (cascading deletes) -->
+				</section>
+
+				<section>
+					<p>
+						<strong><span style="color: lightgreen">DRY</span></strong>
+						is
+						<strong><span style="color: red">COUPLING</span></strong>
+					</p>
+
+					<!-- TODO: evans slide picture -->
 				</section>
 			</div>
 		</div>
