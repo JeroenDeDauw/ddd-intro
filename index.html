@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Domain Driven Design Intro</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style>
+			.shadow { text-shadow: 1px 1px 3px #000, 4px 4px 5px darkblue; }
+			.slide-title { text-shadow: 1px 1px 3px #000, 4px 4px 5px darkblue; font-size: larger; }
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="img/">
+
+					<p class="slide-title">An introduction to</p>
+
+					<h2><span class="shadow">Domain Driven Design</span></h2>
+
+					<p class="shadow">
+						<br />
+						Created by
+						<a href="https://entropywins.wtf/">Jeroen De Dauw</a>
+						for <a href="https://wikimedia.de/">Wikimedia Deutschland</a>
+						<br />
+						Licensed <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>
+					</p>
+
+					<p class="shadow"><br /><a href="https://entropywins.wtf/slides/fun-architecture/">
+						entropywins.wtf/slides/ddd-intro
+					</a></p>
+
+					<p style="text-align: right; font-size: small">IvoryTower.jpg</p>
+
+					<aside class="notes">
+						<p>Introduction to The Clean Architecture</p>
+						<p>Story of our first implementation</p>
+						<p>Lessons learned</p>
+					</aside>
+				</section>
+
+				<section>
+
+				</section>
+
+				<section>
+				</section>
+
+				<section>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				controls: false,
+				progress: false,
+
+				width: 1000,
+				height: 700,
+				margin: 0.05,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
