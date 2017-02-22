@@ -227,30 +227,90 @@
 				<section>
 					<pre style="font-size: x-large" class="fragment"><code class="PHP">
 class Donation {
-    private /* int|null */            $id
-    private /* PersonalInfo|null */   $personalInfo
+    private /* int|null */             $id
+    private /* PersonalInfo|null */    $personalInfo
     /* ... */
 }
 					</code></pre>
 
 					<pre style="font-size: x-large"><code class="PHP">
 class PersonalInfo {
-    private /* PersonName */          $name
-    private /* PhysicalAddress */     $address
-    private /* string */              $emailAddress
+    private /* PersonName */           $name
+    private /* PhysicalAddress */      $address
+    private /* string */               $emailAddress
 }
 					</code></pre>
 
 					<pre style="font-size: x-large" class="fragment"><code class="PHP">
 class MembershipApplication {
-    private /* int|null */            $id
-    private /* PersonalInfo|null */   $personalInfo
+    private /* int|null */             $id
+    private /* PersonalInfo|null */    $personalInfo
     /* ... */
 }
 					</code></pre>
 
 					<aside class="notes">
+						<p>Technical name</p>
+						<p>Two contexts</p>
 						<p>Phone Number, Date of Birth</p>
+					</aside>
+				</section>
+
+				<section>
+					<pre style="font-size: x-large"><code class="PHP">
+class Person {
+    private /* PersonName */           $name
+    private /* PhysicalAddress */      $address
+    private /* string */               $emailAddress
+    private /* PhoneNumber|null */     $phone
+    private /* DateTime|null */        $dateOfBirth
+					</code></pre>
+
+					<pre style="font-size: x-large" class="fragment"><code class="PHP">
+    private /* int|null */             $membershipNumber
+    private /* PhysicalAddress|null */ $shippingAddress
+    private /* string|null */          $shirtSize
+					</code></pre>
+
+					<pre style="font-size: x-large" class="fragment"><code class="PHP">
+    private /* string */               $type
+					</code></pre>
+
+					<aside class="notes">
+						<p>Nullable fields</p>
+						<p>More contexts make it worse</p>
+						<p>Fields can become nullable</p>
+						<p>Meaning becomes unclear</p>
+						<p>Need to deal with all: code and understand</p>
+					</aside>
+				</section>
+
+				<section>
+					<pre style="font-size: x-large"><code class="PHP">
+abstract class Person {
+    private /* string */               $type
+    private /* PersonName */           $name
+    private /* PhysicalAddress */      $address
+    private /* string */               $emailAddress
+}
+					</code></pre>
+
+					<pre style="font-size: x-large" class="fragment"><code class="PHP">
+class Member extends Person {
+    private /* PhoneNumber */          $phone
+}
+					</code></pre>
+
+					<pre style="font-size: x-large" class="fragment"><code class="PHP">
+function persistContactInfo( Person $person ) {
+    // what to save?
+}
+					</code></pre>
+
+					<aside class="notes">
+						<p>"Save" 4 LOC</p>
+						<p>Where to put Person</p>
+						<p>Using Person is bad</p>
 					</aside>
 				</section>
 
@@ -274,25 +334,17 @@ class Applicant {
 					</code></pre>
 				</section>
 
+
 				<section>
-					<pre style="font-size: x-large"><code class="PHP">
-class Person {
-    private /* PersonName */           $name
-    private /* PhysicalAddress|null */ $address
-    private /* string|null */          $emailAddress
-    private /* PhoneNumber|null */     $phone
-    private /* DateTime|null */        $dateOfBirth
-					</code></pre>
+					<p>
+						<strong><span style="color: lightgreen">DRY</span></strong>
+						is
+						<strong><span style="color: red">COUPLING</span></strong>
+					</p>
+				</section>
 
-					<pre style="font-size: x-large" class="fragment"><code class="PHP">
-    private /* int|null */             $membershipNumber
-    private /* PhysicalAddress|null */ $shippingAddress
-    private /* string|null */          $shirtSize
-					</code></pre>
-
-					<pre style="font-size: x-large" class="fragment"><code class="PHP">
-    private /* string */               $type
-					</code></pre>
+				<section>
+					<img src="img/dry-one-context.jpg">
 				</section>
 
 				<section>
@@ -301,8 +353,6 @@ class Person {
 						is
 						<strong><span style="color: red">COUPLING</span></strong>
 					</p>
-
-					<!-- TODO --><p>evans slide picture</p>
 				</section>
 
 				<section>
