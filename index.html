@@ -308,7 +308,7 @@ function persistContactInfo( Person $person ) {
 					</code></pre>
 
 					<aside class="notes">
-						<p>"Save" 4 LOC</p>
+						<p>"Save" 3 LOC</p>
 						<p>Where to put Person</p>
 						<p>Using Person is bad</p>
 					</aside>
@@ -343,20 +343,23 @@ class Applicant {
 					</p>
 				</section>
 
-				<section>
-					<img src="img/dry-one-context.jpg">
+				<section data-background="img/dry-one-context.jpg">
 				</section>
 
 				<section>
-					<p>
-						<strong><span style="color: lightgreen">DRY</span></strong>
-						is
-						<strong><span style="color: red">COUPLING</span></strong>
-					</p>
+					<p>What are your Sub Domains?</p>
+					<p>(Where should you have Bounded Contexts?)</p>
 				</section>
 
 				<section>
-					<!-- TODO --><p>Implementing DDD picture</p>
+					<p>Context Map</p>
+					<p>Core Domain, Supporting Domain, Generic Domain</p>
+					<p>Shared Kernel</p>
+					<p>Anticorruption Layer</p>
+				</section>
+
+				<section>
+					<img src="img/dddd.jpg">
 				</section>
 			</div>
 		</div>
