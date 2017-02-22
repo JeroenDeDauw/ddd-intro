@@ -53,21 +53,37 @@
 				</section>
 
 				<section>
+					<p class="slide-title">Why such evil workshop?</p>
+				</section>
+
+				<section>
 					<p class="slide-title">What is DDD?</p>
 
 					<aside class="notes">
 						<p>People write notes</p>
 						<p>Put on categorized board one by one</p>
+						<hr />
+						<p>Model, BC, Ubiquitous Language, Context Maps, ACL</p>
+						<p>Entities, VOs, Services, Events, Aggregates</p>
+						<p>Layered architecture, factories, repositories</p>
+						<p>Event Sourcing</p>
 					</aside>
 				</section>
 
 				<section>
 					<blockquote style="width: 100%">
+						"Tackling Complexity in the Heart of Software"
+					</blockquote>
+					<p>-- The Blue Bible</p>
+					<br />
+
+					<blockquote class="fragment" style="width: 100%">
 						"DDD is about tackling the inherent complexity of the domain while minimizing the accidental complexity of technical implementation"
 					</blockquote>
 
 					<aside class="notes">
-						<p>Domain experts</p>
+						<p>Not just software: domain, domain experts</p>
+						<p></p>
 					</aside>
 				</section>
 
@@ -76,8 +92,6 @@
 						"At the core of DDD are ubiquitous language within bounded contexts"
 					</blockquote>
 				</section>
-
-
 
 				<section>
 					<p class="slide-title">The Ubiquitous Language</p>
@@ -93,7 +107,7 @@
 					<h3 class="slide-title">The Context Game</h3>
 
 					<div class="fragment">
-						<p>Describe the ideal customer for...</p>
+						<p class="fragment">Describe the ideal customer for...</p>
 
 						<ul>
 							<li>Sales</li>
@@ -106,7 +120,7 @@
 				</section>
 
 				<section>
-					<!-- TODO: big Customer table -->
+					<!-- TODO --><p>big Customer table</p>
 
 					<aside class="notes">
 						<p>The software needs to cater to different goals</p>
@@ -130,6 +144,10 @@
 				</section>
 
 				<section>
+					<p><span class="fill-in">&lt;users&gt;</span> should be able to edit their newsletter preferences</p>
+				</section>
+
+				<section>
 					<p>Contexts are linguistic boundaries</p>
 
 					<aside class="notes">
@@ -139,37 +157,46 @@
 				</section>
 
 				<section>
-					<!-- TODO: three legged race -->
+					<!-- TODO --><p>three legged race</p>
+
 					<aside class="notes">
 						<p>Largely independent</p>
 						<p>Communication: batch, push/pull</p>
-						<p>Yellow flags: unidifed model, once, reuse</p>
+						<p>Yellow flags: unified model, once, reuse</p>
 					</aside>
 				</section>
 
 				<section>
-					<p>Persistence per context</p>
+					<img src="img/fun-architecture-contexts-1.svg" style="background: transparent; border: none" />
+
+					<aside class="notes">
+						<p>Persistence per context</p>
+					</aside>
 				</section>
 
 				<section>
 					<table>
 						<tr>
 							<th>Product</th>
-							<th>Order</th>
+							<th class="fragment" data-fragment-index="1">Order</th>
 						</tr>
-						<tr>
+						<tr style="font-size: x-large">
 							<td>Price</td>
-							<td style="color: yellow">ProductId</td>
+							<td style="color: yellow" class="fragment" data-fragment-index="1">ProductId</td>
 						</tr>
-						<tr>
+						<tr style="font-size: x-large">
 							<td>Seller</td>
-							<td>OrderDate</td>
+							<td class="fragment" data-fragment-index="1">OrderDate</td>
 						</tr>
-						<tr>
+						<tr style="font-size: x-large">
 							<td>...</td>
-							<td>...</td>
+							<td class="fragment" data-fragment-index="1">...</td>
 						</tr>
 					</table>
+
+					<aside class="notes">
+						<p>Price change?</p>
+					</aside>
 				</section>
 
 				<section>
@@ -178,15 +205,15 @@
 							<th>Product</th>
 							<th>Order</th>
 						</tr>
-						<tr>
+						<tr style="font-size: x-large">
 							<td>Price</td>
 							<td style="color: lightgreen">Price (copy)</td>
 						</tr>
-						<tr>
+						<tr style="font-size: x-large">
 							<td>Seller</td>
 							<td>OrderDate</td>
 						</tr>
-						<tr>
+						<tr style="font-size: x-large">
 							<td>...</td>
 							<td>...</td>
 						</tr>
@@ -198,13 +225,88 @@
 				</section>
 
 				<section>
+					<pre style="font-size: x-large" class="fragment"><code class="PHP">
+class Donation {
+    private /* int|null */            $id
+    private /* PersonalInfo|null */   $personalInfo
+    /* ... */
+}
+					</code></pre>
+
+					<pre style="font-size: x-large"><code class="PHP">
+class PersonalInfo {
+    private /* PersonName */          $name
+    private /* PhysicalAddress */     $address
+    private /* string */              $emailAddress
+}
+					</code></pre>
+
+					<pre style="font-size: x-large" class="fragment"><code class="PHP">
+class MembershipApplication {
+    private /* int|null */            $id
+    private /* PersonalInfo|null */   $personalInfo
+    /* ... */
+}
+					</code></pre>
+
+					<aside class="notes">
+						<p>Phone Number, Date of Birth</p>
+					</aside>
+				</section>
+
+				<section>
+					<pre style="font-size: x-large"><code class="PHP">
+class Donor {
+    private /* PersonName */          $name
+    private /* PhysicalAddress */     $address
+    private /* string */              $emailAddress
+}
+					</code></pre>
+
+					<pre style="font-size: x-large"><code class="PHP">
+class Applicant {
+    private /* PersonName */          $name
+    private /* PhysicalAddress */     $address
+    private /* EmailAddress */        $email
+    private /* PhoneNumber */         $phone
+    private /* DateTime|null */       $dateOfBirth
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<pre style="font-size: x-large"><code class="PHP">
+class Person {
+    private /* PersonName */           $name
+    private /* PhysicalAddress|null */ $address
+    private /* string|null */          $emailAddress
+    private /* PhoneNumber|null */     $phone
+    private /* DateTime|null */        $dateOfBirth
+					</code></pre>
+
+					<pre style="font-size: x-large" class="fragment"><code class="PHP">
+    private /* int|null */             $membershipNumber
+    private /* PhysicalAddress|null */ $shippingAddress
+    private /* string|null */          $shirtSize
+					</code></pre>
+
+					<pre style="font-size: x-large" class="fragment"><code class="PHP">
+    private /* string */               $type
+					</code></pre>
+				</section>
+
+				<section>
 					<p>
 						<strong><span style="color: lightgreen">DRY</span></strong>
 						is
 						<strong><span style="color: red">COUPLING</span></strong>
 					</p>
 
-					<!-- TODO: evans slide picture -->
+					<!-- TODO --><p>evans slide picture</p>
+				</section>
+
+				<section>
+					<!-- TODO --><p>Implementing DDD picture</p>
 				</section>
 			</div>
 		</div>
