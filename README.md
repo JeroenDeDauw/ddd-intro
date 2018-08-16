@@ -10,3 +10,7 @@ developers will also benefit from exposure to the included concepts.
 ## Topic list
 
 *
+
+## License
+
+The slides are licensed by Jeroen De Dauw under CC BY-SA 3.0
